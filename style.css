@@ -7,10 +7,3 @@ img {
     padding: 2px;
     border-radius: 50%;
 }
-
-#name {
-    display: flex;
-    justify-content: center;
-    border: 2px solid;
-    margin: 1vh 45% 0 45%;
-}
