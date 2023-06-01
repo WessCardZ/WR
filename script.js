@@ -5,7 +5,20 @@ async function getOne(uri) {
 }
 
 async function carregarUsuario() {
-    const fotos = await getOne('https://randomuser.me/api/?nat=BR');
+    const usuario = await getOne('https://randomuser.me/api/?nat=BR');
 
-    document.getElementById('foto').src = fotos.results[0].picture.large;
+    let nomeP = document.getElementById('name').value = usuario.results[0].name.first;
+    let nomeU = document.getElementById('name').value = usuario.results[0].name.last;
+
+    let nomeC = `${nomeP} ${nomeU}`
+
+    document.getElementById('foto').src = usuario.results[0].picture.large;
+    document.getElementById('name').innerText = nomeC
+    document.getElementById('email').innerText = usuario.results[0].email;
+    document.getElementById('phone').innerText = usuario.results[0].phone;
+    document.getElementById('age').innerText = usuario.results[0].registered.age;
+
+
+
+    document.getElementById('city').innerText = usuario.results[0].location.city;
 }
