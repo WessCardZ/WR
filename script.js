@@ -4,6 +4,7 @@ async function getOne(uri) {
     return await response.json();
 }
 
+
 async function carregarUsuario() {
     const usuario = await getOne('https://randomuser.me/api/?nat=BR');
 
@@ -18,7 +19,49 @@ async function carregarUsuario() {
     document.getElementById('phone').innerText = usuario.results[0].phone;
     document.getElementById('age').innerText = usuario.results[0].registered.age;
 
+    let city = document.getElementById('estado').value = usuario.results[0].location.city;
+    let state = document.getElementById('estado').value = usuario.results[0].location.state;
+
+    let cidade = `${city}`
+    let estados = `${state}`
 
 
-    document.getElementById('city').innerText = usuario.results[0].location.city;
+    /// script de mudança de nomes ///
+
+    /// Primeiro IF Verifica se um dos nomes é MATO GROSSO ou PARAIBA para apenas pegar as 2 letras especificas
+    if (estados.toLowerCase() === 'mato grosso' ||
+        estados.toLowerCase() === 'paraíba'
+        || estados.toLowerCase() === 'paraiba') {
+
+        if (estados.toLowerCase() === 'mato grosso') {
+            document.getElementById('estado').innerText = `${cidade}/MT`
+        }
+        else {
+            document.getElementById('estado').innerText = ` ${cidade}/PB`
+        }
+    }
+    /// O Else IF verifica se os nomes tem espaço, se tiver ele pega a primeira letra do primeiro nome, e a primeira letra do ultimo nome
+    else if (estados.indexOf(" ") !== -1) {
+        let prNome = estados.indexOf(" ")
+        let ultNome = estados.lastIndexOf(" ")
+
+        let saida =
+            estados.substr(0, prNome).charAt(0).toUpperCase() +
+            estados.substr(ultNome).charAt(1).toUpperCase();
+
+        document.getElementById('estado').innerText = `${cidade}/${saida}`
+
+    }
+    /// O else faz o contrario do Else IF, se não tiver espaço, ele pega as 2 primeiras letras do nome
+    else {
+        let tam = estados.length
+        let prLetra = estados.charAt(0)
+        let sgLetra = estados.charAt(1)
+
+        let saida = prLetra + sgLetra
+
+        document.getElementById('estado').innerText = `${cidade}/${saida.toUpperCase()}`
+    }
+
+
 }
