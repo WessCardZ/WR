@@ -17,7 +17,7 @@ async function carregarUsuario() {
     document.getElementById('name').innerText = nomeC
     document.getElementById('email').innerText = usuario.results[0].email;
     document.getElementById('phone').innerText = usuario.results[0].phone;
-    document.getElementById('age').innerText = usuario.results[0].registered.age;
+    document.getElementById('age').innerText = usuario.results[0].dob.age;
 
     let city = document.getElementById('state').value = usuario.results[0].location.city;
     let state = document.getElementById('state').value = usuario.results[0].location.state;
