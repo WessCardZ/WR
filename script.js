@@ -30,14 +30,17 @@ async function carregarUsuario() {
 
     /// Primeiro IF Verifica se um dos nomes é MATO GROSSO ou PARAIBA para apenas pegar as 2 letras especificas
     if (estados.toLowerCase() === 'mato grosso' ||
-        estados.toLowerCase() === 'paraíba'
-        || estados.toLowerCase() === 'paraiba') {
+        estados.toLowerCase() === 'paraíba' ||
+        estados.toLowerCase() === 'amapá') {
 
         if (estados.toLowerCase() === 'mato grosso') {
             document.getElementById('estado').innerText = `${cidade}/MT`
         }
-        else {
+        else if (estados.toLowerCase() === 'paraíba') {
             document.getElementById('estado').innerText = ` ${cidade}/PB`
+        }
+        else {
+            document.getElementById('estado').innerText = ` ${cidade}/AP`
         }
     }
     /// O Else IF verifica se os nomes tem espaço, se tiver ele pega a primeira letra do primeiro nome, e a primeira letra do ultimo nome
