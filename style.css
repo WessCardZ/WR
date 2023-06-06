@@ -1,9 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
 body {
     text-align: center;
+    background-color:rgba(43, 87, 72, 0.603)
 }
 
 img {
+    width: 210px;
     border: 2px solid;
     padding: 2px;
     border-radius: 50%;
+}
+
+#name {
+    position: absolute;
+    font-size:xx-large;
+    left: 640px;
+    bottom: 662px;
+    background-color:rgba(9, 168, 9, 0.795);
+    border: double rgba(12, 9, 168, 0.795);
+    border-radius: 5px;
+    font-family: 'Abel';
+}
+
+#cpf {
+    font-size:xx-large
+}
+
+#email {
+    position: absolute;
+    font-size:xx-large;
+    left: 640px;
+    bottom: 600px;
+    background-color:rgba(9, 168, 9, 0.795);
+    border: double rgba(12, 9, 168, 0.795);
+    border-radius: 5px;
+    font-family: 'Abel';
+}
+
+#phone {
+    position: absolute;
+    font-size:xx-large;
+    left: 640px;
+    bottom: 540px;
+    background-color:rgba(9, 168, 9, 0.795);
+    border: double rgba(12, 9, 168, 0.795);
+    border-radius: 10px;
+    font-family: 'Abel';
+}
+
+#age { 
+    position: absolute;
+    font-size:xx-large;
+    left: 700px;
+    bottom: 470px;
+    background-color:rgba(9, 168, 9, 0.795);
+    border: double rgba(12, 9, 168, 0.795);
+    border-radius: 15px;
+    font-family: 'Abel';
+}
+
+
+#city {
+    font-size:xx-large
+}
+
+#state {
+    position: absolute;
+    font-size:xx-large;
+    left: 640px;
+    bottom: 406px;
+    background-color:rgba(9, 168, 9, 0.795);
+    border: double rgba(12, 9, 168, 0.795);
+    border-radius: 5px;
+    font-family: 'Abel';
+}
+
+#textoNome {
+    font-family: 'Abel';
+    font-weight: 900;
+    font-size: 40px;
 }
