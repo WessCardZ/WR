@@ -14,7 +14,8 @@ async function carregarUsuario() {
     let nomeC = `${nomeP} ${nomeU}`
 
     document.getElementById('foto').src = usuario.results[0].picture.large;
-    document.getElementById('gender').innerText = usuario.results[0].gender;
+
+    document.getElementById('nat').innerText = usuario.results[0].nat;
     document.getElementById('cpf').innerText = usuario.results[0].id.value;
     document.getElementById('name').innerText = nomeC
     document.getElementById('email').innerText = usuario.results[0].email;
@@ -27,8 +28,17 @@ async function carregarUsuario() {
     let cities = `${city}`
     let states = `${state}`
 
+    // esse IF serve para traduzir os generos de ingles para português
 
-    /// script de mudança de nomes ///
+    let gender = document.getElementById('gender').value = usuario.results[0].gender;
+
+    if (gender == `male`) {
+        document.getElementById('gender').innerText = 'Homem'
+    }
+    else {
+        document.getElementById('gender').innerText = 'Mulher'
+    }
+    // Esse é o fim do IF
 
     /// Primeiro IF Verifica se um dos nomes é MATO GROSSO ou PARAIBA para apenas pegar as 2 letras especificas
     if (states.toLowerCase() === 'mato grosso' ||

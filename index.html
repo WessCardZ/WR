@@ -6,25 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WR</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body onload="carregarUsuario()">
-    <img id="foto" src="" alt="alguem">
+    <hr>
+    <div id="container">
+        <div class="documento">
+            <p>Nome: <span id="name"></span></p>
+            <p>Cpf: <span id="cpf"></span></p>
+            <p>Gênero:<span id="gender"></span></p>
+            <p>Nacionalidade:<span id="nat"></span></p>
+        </div>
 
-    <!--<p id="textoNome">Nome:</p>
-    <p id="textoCpf">Cpf:</p>
-    <p id="textoEmail">Email:</p>
-    <p id="textoPhone">Tel:</p>
-    <p id="textoCity">Cidade:</p> -->
+        <div id="test">
+            <img id="foto" src="" alt="alguem">
+        </div>
 
-    <p id="name"></p>
-    <p id="gender"></p>
-    <p id="cpf"></p>
-    <p id="email"></p>
-    <p id="phone"></p>
-    <p id="age"></p>
-    <p id="state"></p>
+        <div class="complemento">
+            <p>Estado: <span id="state"></span></p>
+            <p>Email: <span id="email"></span></p>
+            <p>Telefone:<span id="phone"></span></p>
+            <p>Idade: <span id="age"></span></p>
+        </div>
+    </div>
+    <hr>
 
     <script src="script.js"></script>
 </body>
