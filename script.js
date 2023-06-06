@@ -22,12 +22,6 @@ async function carregarUsuario() {
     document.getElementById('phone').innerText = usuario.results[0].phone;
     document.getElementById('age').innerText = usuario.results[0].dob.age;
 
-    let city = document.getElementById('state').value = usuario.results[0].location.city;
-    let state = document.getElementById('state').value = usuario.results[0].location.state;
-
-    let cities = `${city}`
-    let states = `${state}`
-
     // esse IF serve para traduzir os generos de ingles para português
 
     let gender = document.getElementById('gender').value = usuario.results[0].gender;
@@ -40,42 +34,45 @@ async function carregarUsuario() {
     }
     // Esse é o fim do IF
 
-    /// Primeiro IF Verifica se um dos nomes é MATO GROSSO ou PARAIBA para apenas pegar as 2 letras especificas
-    if (states.toLowerCase() === 'mato grosso' ||
-        states.toLowerCase() === 'paraíba' ||
-        states.toLowerCase() === 'amapá') {
+    let city = document.getElementById('state').value = usuario.results[0].location.city;
+    let state = document.getElementById('state').value = usuario.results[0].location.state;
 
-        if (states.toLowerCase() === 'mato grosso') {
-            document.getElementById('state').innerText = `${cities}/MT`
+    /// Primeiro IF Verifica se um dos nomes é MATO GROSSO ou PARAIBA para apenas pegar as 2 letras especificas
+    if (state.toLowerCase() === 'mato grosso' ||
+        state.toLowerCase() === 'paraíba' ||
+        state.toLowerCase() === 'amapá') {
+
+        if (state.toLowerCase() === 'mato grosso') {
+            document.getElementById('state').innerText = `${city}/MT`
         }
-        else if (states.toLowerCase() === 'paraíba') {
-            document.getElementById('state').innerText = ` ${cities}/PB`
+        else if (state.toLowerCase() === 'paraíba') {
+            document.getElementById('state').innerText = ` ${city}/PB`
         }
         else {
-            document.getElementById('state').innerText = ` ${cities}/AP`
+            document.getElementById('state').innerText = ` ${city}/AP`
         }
     }
     /// O Else IF verifica se os nomes tem espaço, se tiver ele pega a primeira letra do primeiro nome,
     ///  e a primeira letra do ultimo nome.
-    else if (states.indexOf(" ") !== -1) {
-        let prNome = states.indexOf(" ")
-        let ultNome = states.lastIndexOf(" ")
+    else if (state.indexOf(" ") !== -1) {
+        let prNome = state.indexOf(" ")
+        let ultNome = state.lastIndexOf(" ")
 
         let saida =
-            states.substr(0, prNome).charAt(0).toUpperCase() +
-            states.substr(ultNome).charAt(1).toUpperCase();
+            state.substr(0, prNome).charAt(0).toUpperCase() +
+            state.substr(ultNome).charAt(1).toUpperCase();
 
-        document.getElementById('state').innerText = `${cities}/${saida}`
+        document.getElementById('state').innerText = `${city}/${saida}`
 
     }
     /// O else faz o contrario do Else IF, se não tiver espaço, ele pega as 2 primeiras letras do nome
     else {
-        let prLetra = states.charAt(0)
-        let sgLetra = states.charAt(1)
+        let prLetra = state.charAt(0)
+        let sgLetra = state.charAt(1)
 
         let saida = prLetra + sgLetra
 
-        document.getElementById('state').innerText = `${cities}/${saida.toUpperCase()}`
+        document.getElementById('state').innerText = `${city}/${saida.toUpperCase()}`
     }
 
 
