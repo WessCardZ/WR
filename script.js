@@ -14,6 +14,8 @@ async function carregarUsuario() {
     let nomeC = `${nomeP} ${nomeU}`
 
     document.getElementById('foto').src = usuario.results[0].picture.large;
+    document.getElementById('gender').innerText = usuario.results[0].gender;
+    document.getElementById('cpf').innerText = usuario.results[0].id.value;
     document.getElementById('name').innerText = nomeC
     document.getElementById('email').innerText = usuario.results[0].email;
     document.getElementById('phone').innerText = usuario.results[0].phone;
