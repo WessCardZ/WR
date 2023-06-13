@@ -6,7 +6,7 @@ async function getOne(uri) {
 
 
 async function carregarUsuario() {
-    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=10');
+    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15');
 
     let nomeP = document.getElementById('name').value = usuario.results[0].name.first;
     let nomeU = document.getElementById('name').value = usuario.results[0].name.last;
@@ -32,6 +32,12 @@ async function carregarUsuario() {
 
     let city = document.getElementById('state').value = usuario.results[0].location.city;
     let state = document.getElementById('state').value = usuario.results[0].location.state;
+    let sigla = converterEstado(state);
+    document.getElementById('state').innerText = ` ${city}/${sigla}`
+
+}
+
+function converterEstado(state) {
 
     /// Primeiro IF Verifica se um dos nomes é MATO GROSSO ou PARAIBA para apenas pegar as 2 letras especificas
     if (state.toLowerCase() === 'mato grosso' ||
@@ -39,13 +45,16 @@ async function carregarUsuario() {
         state.toLowerCase() === 'amapá') {
 
         if (state.toLowerCase() === 'mato grosso') {
-            document.getElementById('state').innerText = `${city}/MT`
+            state = `MT`;
+            return state
         }
         else if (state.toLowerCase() === 'paraíba') {
-            document.getElementById('state').innerText = ` ${city}/PB`
+            state = `PB`;
+            return state;
         }
         else {
-            document.getElementById('state').innerText = ` ${city}/AP`
+            state = `AP`
+            return state;
         }
     }
     /// O Else IF verifica se os nomes tem espaço, se tiver ele pega a primeira letra do primeiro nome,
@@ -58,7 +67,9 @@ async function carregarUsuario() {
             state.substr(0, prNome).charAt(0).toUpperCase() +
             state.substr(ultNome).charAt(1).toUpperCase();
 
-        document.getElementById('state').innerText = `${city}/${saida}`
+        state = `${saida}`
+
+        return state;
 
     }
     /// O else faz o contrario do Else IF, se não tiver espaço, ele pega as 2 primeiras letras do nome
@@ -68,7 +79,8 @@ async function carregarUsuario() {
 
         let saida = prLetra + sgLetra
 
-        document.getElementById('state').innerText = `${city}/${saida.toUpperCase()}`
-    }
+        state = `${saida.toUpperCase()}`
 
+        return state;
+    }
 }

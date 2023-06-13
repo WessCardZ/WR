@@ -22,12 +22,10 @@ img {
     font-family: Abel;
 }
 
-
-/*
-#container {
+/* #container {
     display: flex;
     position: absolute;
-    text-align: center; 
+    text-align: center;
     background-color: white;
     border-radius: 20px;
     min-width: 105vh;
@@ -39,11 +37,10 @@ img {
 
 .documento {
     padding-left: 20px;
-     display: flex; 
-     flex-direction: column; 
+    display: flex;
+    flex-direction: column;
 }
 
 .complemento {
     padding-left: 20px;
-}
-*/
+} */
