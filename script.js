@@ -4,7 +4,6 @@ async function getOne(uri) {
     return await response.json();
 }
 
-
 async function carregarUsuario() {
     const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15');
 
