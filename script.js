@@ -71,5 +71,4 @@ async function carregarUsuario() {
         document.getElementById('state').innerText = `${city}/${saida.toUpperCase()}`
     }
 
-
 }
