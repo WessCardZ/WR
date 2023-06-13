@@ -6,7 +6,7 @@ async function getOne(uri) {
 
 
 async function carregarUsuario() {
-    const usuario = await getOne('https://randomuser.me/api/?nat=BR');
+    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=10');
 
     let nomeP = document.getElementById('name').value = usuario.results[0].name.first;
     let nomeU = document.getElementById('name').value = usuario.results[0].name.last;
@@ -26,12 +26,8 @@ async function carregarUsuario() {
 
     let gender = document.getElementById('gender').value = usuario.results[0].gender;
 
-    if (gender == `male`) {
-        document.getElementById('gender').innerText = 'Homem'
-    }
-    else {
-        document.getElementById('gender').innerText = 'Mulher'
-    }
+    gender == `male` ? document.getElementById('gender').innerText = 'Homem' : document.getElementById('gender').innerText = 'Mulher';
+
     // Esse é o fim do IF
 
     let city = document.getElementById('state').value = usuario.results[0].location.city;
