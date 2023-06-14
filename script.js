@@ -5,14 +5,13 @@ async function getOne(uri) {
 }
 
 async function carregarUsuario() {
-    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15');
+    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=1');
 
     const usuariosContainer = document.getElementById('usuarios-container');
 
     for (let i = 0; i < usuario.results.length; i++) {
         adicionarLinhas(usuariosContainer, usuario, i)
     }
-
 }
 
 function converterEstado(estados) {

@@ -15,7 +15,7 @@ img {
 #usuarios-container {
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(252, 252, 252, 0.486);
+    background-color: rgb(221, 221, 221);
     border-radius: 20px;
     min-width: 85vh;
     max-width: 300vh;
@@ -32,7 +32,7 @@ img {
     margin-right: 20px;
     margin-bottom: 20px;
     padding: 10px;
-    border: 1px solid #fffffffd;
+    border: 1px solid #000000;
     border-radius: 10px;
     width: 100%;
     justify-content: space-evenly
@@ -42,4 +42,23 @@ p {
     display: flex;
     flex-direction: column;
     padding-left: 20px;
+}
+
+button {
+    border: 1px solid white;
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+    margin: 15px;
+    background: none;
+    color: white;
+}
+
+button:hover {
+    border: 1px solid rgb(10, 32, 231);
+    color: rgb(10, 32, 231);
+}
+
+footer {
+    text-align: center;
 }
