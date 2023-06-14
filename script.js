@@ -91,9 +91,9 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
     const documentosP = document.createElement('div');
     usuarioDiv.appendChild(nomeCP);
 
-    const genderP = document.createElement('p');
-    genderP.innerHTML = `<strong>Gênero:</strong> <span>${genero === 'male' ? 'Homem' : 'Mulher'}</span>`;
-    usuarioDiv.appendChild(genderP);
+    const generoP = document.createElement('p');
+    generoP.innerHTML = `<strong>Gênero:</strong> <span>${genero === 'male' ? 'Homem' : 'Mulher'}</span>`;
+    usuarioDiv.appendChild(generoP);
 
     const natP = document.createElement('p');
     natP.innerHTML = `<strong>Nacionalidade:</strong> <span>${nat}</span>`;
@@ -103,21 +103,21 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
     cpfP.innerHTML = `<strong>CPF:</strong> <span>${cpf}</span>`;
     usuarioDiv.appendChild(cpfP);
 
-    const ageP = document.createElement('p');
-    ageP.innerHTML = `<strong>Idade:</strong> <span>${idade}</span>`;
-    usuarioDiv.appendChild(ageP);
+    const idadeP = document.createElement('p');
+    idadeP.innerHTML = `<strong>Idade:</strong> <span>${idade}</span>`;
+    usuarioDiv.appendChild(idadeP);
 
-    const stateP = document.createElement('p');
-    stateP.innerHTML = `<strong>Estado:</strong> <span>${cidade}/${sigla}</span>`;
-    usuarioDiv.appendChild(stateP);
+    const estadoP = document.createElement('p');
+    estadoP.innerHTML = `<strong>Estado:</strong> <span>${cidade}/${sigla}</span>`;
+    usuarioDiv.appendChild(estadoP);
 
     const emailP = document.createElement('p');
     emailP.innerHTML = `<strong>Email:</strong> <span>${email}</span>`;
     usuarioDiv.appendChild(emailP);
 
-    const phoneP = document.createElement('p');
-    phoneP.innerHTML = `<strong>Telefone:</strong> <span>${telefone}</span>`;
-    usuarioDiv.appendChild(phoneP);
+    const telefoneP = document.createElement('p');
+    telefoneP.innerHTML = `<strong>Telefone:</strong> <span>${telefone}</span>`;
+    usuarioDiv.appendChild(telefoneP);
 
     usuariosContainer.appendChild(usuarioDiv);
 }
