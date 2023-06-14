@@ -10,8 +10,32 @@ async function carregarUsuario() {
     const usuariosContainer = document.getElementById('usuarios-container');
 
     for (let i = 0; i < usuario.results.length; i++) {
-        adicionarLinhas(usuariosContainer, usuario, i)
+        adicionarLinhas(usuariosContainer, usuario, i);
     }
+}
+
+async function carregarSegundaPagina() {
+    const segundaPagina = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=2');
+
+    const usuariosContainer = document.getElementById('usuarios-container');
+
+    for (let i = 0; i < segundaPagina.results.length; i++) {
+        adicionarLinhas(usuariosContainer, segundaPagina, i);
+    }
+}
+
+async function carregarTerceiraPagina() {
+    const terceiraPagina = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=3');
+
+    const usuariosContainer = document.getElementById('usuarios-container');
+
+    for (let i = 0; i < terceiraPagina.results.length; i++) {
+        adicionarLinhas(usuariosContainer, terceiraPagina, i);
+    }
+}
+
+function adicionarLinhas(container, data, index) {
+    // Lógica para adicionar as linhas de usuário ao container
 }
 
 function converterEstado(estados) {
