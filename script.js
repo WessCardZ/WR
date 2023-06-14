@@ -5,7 +5,7 @@ async function getOne(uri) {
 }
 
 async function carregarUsuario() {
-    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=1');
+    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=1&seed=WR&page=1');
 
     const usuariosContainer = document.getElementById('usuarios-container');
 
