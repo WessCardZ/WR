@@ -15,51 +15,51 @@ async function carregarUsuario() {
 
 }
 
-function converterEstado(state) {
+function converterEstado(estados) {
 
     /// Primeiro IF Verifica se um dos nomes é MATO GROSSO ou PARAIBA para apenas pegar as 2 letras especificas
-    if (state.toLowerCase() === 'mato grosso' ||
-        state.toLowerCase() === 'paraíba' ||
-        state.toLowerCase() === 'amapá') {
+    if (estados.toLowerCase() === 'mato grosso' ||
+        estados.toLowerCase() === 'paraíba' ||
+        estados.toLowerCase() === 'amapá') {
 
-        if (state.toLowerCase() === 'mato grosso') {
-            state = `MT`;
-            return state
+        if (estados.toLowerCase() === 'mato grosso') {
+            estados = `MT`;
+            return estados
         }
-        else if (state.toLowerCase() === 'paraíba') {
-            state = `PB`;
-            return state;
+        else if (estados.toLowerCase() === 'paraíba') {
+            estados = `PB`;
+            return estados;
         }
         else {
-            state = `AP`
-            return state;
+            estados = `AP`
+            return estados;
         }
     }
     /// O Else IF verifica se os nomes tem espaço, se tiver ele pega a primeira letra do primeiro nome,
     ///  e a primeira letra do ultimo nome.
-    else if (state.indexOf(" ") !== -1) {
-        let prNome = state.indexOf(" ")
-        let ultNome = state.lastIndexOf(" ")
+    else if (estados.indexOf(" ") !== -1) {
+        let prNome = estados.indexOf(" ")
+        let ultNome = estados.lastIndexOf(" ")
 
         let saida =
-            state.substr(0, prNome).charAt(0).toUpperCase() +
-            state.substr(ultNome).charAt(1).toUpperCase();
+            estados.substr(0, prNome).charAt(0).toUpperCase() +
+            estados.substr(ultNome).charAt(1).toUpperCase();
 
-        state = `${saida}`
+        estados = `${saida}`
 
-        return state;
+        return estados;
 
     }
     /// O else faz o contrario do Else IF, se não tiver espaço, ele pega as 2 primeiras letras do nome
     else {
-        let prLetra = state.charAt(0)
-        let sgLetra = state.charAt(1)
+        let prLetra = estados.charAt(0)
+        let sgLetra = estados.charAt(1)
 
         let saida = prLetra + sgLetra
 
-        state = `${saida.toUpperCase()}`
+        estados = `${saida.toUpperCase()}`
 
-        return state;
+        return estados;
     }
 }
 
@@ -88,7 +88,6 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
 
     const nomeCP = document.createElement('p');
     nomeCP.innerHTML = `<strong>Nome:</strong> <span>${nomeC}</span>`;
-    const documentosP = document.createElement('div');
     usuarioDiv.appendChild(nomeCP);
 
     const generoP = document.createElement('p');
