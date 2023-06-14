@@ -7,32 +7,11 @@ async function getOne(uri) {
 async function carregarUsuario() {
     const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15');
 
-    let nomeP = document.getElementById('name').value = usuario.results[0].name.first;
-    let nomeU = document.getElementById('name').value = usuario.results[0].name.last;
+    const usuariosContainer = document.getElementById('usuarios-container');
 
-    let nomeC = `${nomeP} ${nomeU}`
-
-    document.getElementById('foto').src = usuario.results[0].picture.large;
-
-    document.getElementById('nat').innerText = usuario.results[0].nat;
-    document.getElementById('cpf').innerText = usuario.results[0].id.value;
-    document.getElementById('name').innerText = nomeC
-    document.getElementById('email').innerText = usuario.results[0].email;
-    document.getElementById('phone').innerText = usuario.results[0].phone;
-    document.getElementById('age').innerText = usuario.results[0].dob.age;
-
-    // esse IF serve para traduzir os generos de ingles para português
-
-    let gender = document.getElementById('gender').value = usuario.results[0].gender;
-
-    gender == `male` ? document.getElementById('gender').innerText = 'Homem' : document.getElementById('gender').innerText = 'Mulher';
-
-    // Esse é o fim do IF
-
-    let city = document.getElementById('state').value = usuario.results[0].location.city;
-    let state = document.getElementById('state').value = usuario.results[0].location.state;
-    let sigla = converterEstado(state);
-    document.getElementById('state').innerText = ` ${city}/${sigla}`
+    for (let i = 0; i < usuario.results.length; i++) {
+        adicionarLinhas(usuariosContainer, usuario, i)
+    }
 
 }
 
@@ -82,4 +61,63 @@ function converterEstado(state) {
 
         return state;
     }
+}
+
+async function adicionarLinhas(usuariosContainer, usuario, i) {
+    const nomeP = usuario.results[i].name.first;
+    const nomeU = usuario.results[i].name.last;
+    const nomeC = `${nomeP} ${nomeU}`;
+
+    const foto = usuario.results[i].picture.large;
+    const nat = usuario.results[i].nat;
+    const cpf = usuario.results[i].id.value;
+    const email = usuario.results[i].email;
+    const telefone = usuario.results[i].phone;
+    const idade = usuario.results[i].dob.age;
+    const genero = usuario.results[i].gender;
+    const cidade = usuario.results[i].location.city;
+    const estado = usuario.results[i].location.state;
+    const sigla = converterEstado(estado);
+
+    const usuarioDiv = document.createElement('div');
+    usuarioDiv.className = 'usuario';
+
+    const fotoImg = document.createElement('img');
+    fotoImg.src = foto;
+    usuarioDiv.appendChild(fotoImg);
+
+    const nomeCP = document.createElement('p');
+    nomeCP.innerHTML = `<strong>Nome:</strong> <span>${nomeC}</span>`;
+    const documentosP = document.createElement('div');
+    usuarioDiv.appendChild(nomeCP);
+
+    const genderP = document.createElement('p');
+    genderP.innerHTML = `<strong>Gênero:</strong> <span>${genero === 'male' ? 'Homem' : 'Mulher'}</span>`;
+    usuarioDiv.appendChild(genderP);
+
+    const natP = document.createElement('p');
+    natP.innerHTML = `<strong>Nacionalidade:</strong> <span>${nat}</span>`;
+    usuarioDiv.appendChild(natP);
+
+    const cpfP = document.createElement('p');
+    cpfP.innerHTML = `<strong>CPF:</strong> <span>${cpf}</span>`;
+    usuarioDiv.appendChild(cpfP);
+
+    const ageP = document.createElement('p');
+    ageP.innerHTML = `<strong>Idade:</strong> <span>${idade}</span>`;
+    usuarioDiv.appendChild(ageP);
+
+    const stateP = document.createElement('p');
+    stateP.innerHTML = `<strong>Estado:</strong> <span>${cidade}/${sigla}</span>`;
+    usuarioDiv.appendChild(stateP);
+
+    const emailP = document.createElement('p');
+    emailP.innerHTML = `<strong>Email:</strong> <span>${email}</span>`;
+    usuarioDiv.appendChild(emailP);
+
+    const phoneP = document.createElement('p');
+    phoneP.innerHTML = `<strong>Telefone:</strong> <span>${telefone}</span>`;
+    usuarioDiv.appendChild(phoneP);
+
+    usuariosContainer.appendChild(usuarioDiv);
 }

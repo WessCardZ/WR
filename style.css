@@ -1,46 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
 body {
-    flex-wrap: wrap;
     background-color: #1b1e23;
 }
 
 img {
+    position: relative;
     border: 2px solid gray;
     border-radius: 50%;
-    box-shadow: 2px 2px 6px;
+    box-shadow: 3px 3px 4px;
 }
 
-#container {
-    position: absolute;
-    text-align: center;
-    background-color: white;
-    border-radius: 20px;
-    min-width: 50vh;
-    max-width: 180vh;
-    padding-top: 15px;
-    font-family: Abel;
-}
-
-/* #container {
+#usuarios-container {
     display: flex;
-    position: absolute;
-    text-align: center;
+    flex-wrap: wrap;
     background-color: white;
     border-radius: 20px;
-    min-width: 105vh;
-    max-width: 180vh;
+    min-width: 85vh;
+    max-width: 300vh;
     padding-top: 15px;
     padding-left: 15px;
-    font-family: Abel;
+    font-family: 'Abel', sans-serif;
 }
 
-.documento {
-    padding-left: 20px;
+.usuario {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+p {
     display: flex;
     flex-direction: column;
-}
-
-.complemento {
     padding-left: 20px;
-} */
+}
