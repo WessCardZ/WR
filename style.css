@@ -9,6 +9,7 @@ img {
     border: 2px solid gray;
     border-radius: 50%;
     box-shadow: 3px 3px 4px;
+    padding: 2px;
 }
 
 #usuarios-container {
@@ -22,6 +23,7 @@ img {
     padding-left: 15px;
     font-family: 'Abel', sans-serif;
     font-size: x-large;
+
 }
 
 .usuario {
@@ -32,6 +34,8 @@ img {
     padding: 10px;
     border: 1px solid #fffffffd;
     border-radius: 10px;
+    width: 100%;
+    justify-content: space-evenly
 }
 
 p {
