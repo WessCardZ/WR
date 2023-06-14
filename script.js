@@ -24,15 +24,12 @@ function converterEstado(estados) {
 
         if (estados.toLowerCase() === 'mato grosso') {
             estados = `MT`;
-            return estados
         }
         else if (estados.toLowerCase() === 'paraíba') {
             estados = `PB`;
-            return estados;
         }
         else {
             estados = `AP`
-            return estados;
         }
     }
     /// O Else IF verifica se os nomes tem espaço, se tiver ele pega a primeira letra do primeiro nome,
@@ -47,8 +44,6 @@ function converterEstado(estados) {
 
         estados = `${saida}`
 
-        return estados;
-
     }
     /// O else faz o contrario do Else IF, se não tiver espaço, ele pega as 2 primeiras letras do nome
     else {
@@ -59,8 +54,11 @@ function converterEstado(estados) {
 
         estados = `${saida.toUpperCase()}`
 
-        return estados;
+
     }
+
+    return estados;
+
 }
 
 async function adicionarLinhas(usuariosContainer, usuario, i) {
@@ -120,3 +118,5 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
 
     usuariosContainer.appendChild(usuarioDiv);
 }
+
+
