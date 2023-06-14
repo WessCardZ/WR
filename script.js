@@ -21,6 +21,7 @@ async function carregarSegundaPagina() {
 
     for (let i = 0; i < segundaPagina.results.length; i++) {
         adicionarLinhas(usuariosContainer, segundaPagina, i);
+        window.location.reload();
     }
 }
 
@@ -31,11 +32,8 @@ async function carregarTerceiraPagina() {
 
     for (let i = 0; i < terceiraPagina.results.length; i++) {
         adicionarLinhas(usuariosContainer, terceiraPagina, i);
+        
     }
-}
-
-function adicionarLinhas(container, data, index) {
-    // Lógica para adicionar as linhas de usuário ao container
 }
 
 function converterEstado(estados) {
