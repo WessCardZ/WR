@@ -31,7 +31,7 @@ async function carregarTerceiraPagina() {
     usuariosContainer.innerHTML = ""
     for (let i = 0; i < terceiraPagina.results.length; i++) {
         adicionarLinhas(usuariosContainer, terceiraPagina, i);
-        
+
     }
 }
 
@@ -106,6 +106,7 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
 
     const nomeCP = document.createElement('p');
     nomeCP.innerHTML = `<strong>Nome:</strong> <span>${nomeC}</span>`;
+    nomeCP.className = 'name'
     usuarioDiv.appendChild(nomeCP);
 
     const generoP = document.createElement('p');
