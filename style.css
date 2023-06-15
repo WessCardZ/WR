@@ -63,3 +63,37 @@ button:hover {
 footer {
     text-align: center;
 }
+/*Classes que o css precisa chamar para centralizar todos os resultados. */
+/*imagem,name,genero,nac,cpf,idade,estado,email,telefone*/
+.name {
+    width: 200px;
+}
+.genero{
+    width: 100px;
+    
+}
+.nac{
+width: 200px;
+
+}
+.cpf{
+   width: 200px;   
+
+}
+.idade{
+   width: 100px;   
+
+}
+.estado{
+  width: 200px; 
+
+}
+.email{
+  width: 200px;    
+
+}
+.telefone{
+   padding-left: 160px; 
+   width: 400px;
+      
+}

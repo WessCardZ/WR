@@ -87,7 +87,7 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
     const nomeC = `${nomeP} ${nomeU}`;
 
     const foto = usuario.results[i].picture.large;
-    const nat = usuario.results[i].nat;
+    const nac = usuario.results[i].nat;
     const cpf = usuario.results[i].id.value;
     const email = usuario.results[i].email;
     const telefone = usuario.results[i].phone;
@@ -102,6 +102,7 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
 
     const fotoImg = document.createElement('img');
     fotoImg.src = foto;
+    fotoImg.className = 'imagem'
     usuarioDiv.appendChild(fotoImg);
 
     const nomeCP = document.createElement('p');
@@ -111,33 +112,41 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
 
     const generoP = document.createElement('p');
     generoP.innerHTML = `<strong>Gênero:</strong> <span>${genero === 'male' ? 'Homem' : 'Mulher'}</span>`;
+    generoP.className = 'genero'
     usuarioDiv.appendChild(generoP);
 
-    const natP = document.createElement('p');
-    natP.innerHTML = `<strong>Nacionalidade:</strong> <span>${nat}</span>`;
-    usuarioDiv.appendChild(natP);
+    const nacP = document.createElement('p');
+    nacP.innerHTML = `<strong>Nacionalidade:</strong> <span>${nac}</span>`;
+    nacP.className = 'nac'
+    usuarioDiv.appendChild(nacP);
 
     const cpfP = document.createElement('p');
     cpfP.innerHTML = `<strong>CPF:</strong> <span>${cpf}</span>`;
+    cpfP.className = 'cpf'
     usuarioDiv.appendChild(cpfP);
 
     const idadeP = document.createElement('p');
     idadeP.innerHTML = `<strong>Idade:</strong> <span>${idade}</span>`;
+    idadeP.className = 'idade'
     usuarioDiv.appendChild(idadeP);
 
     const estadoP = document.createElement('p');
     estadoP.innerHTML = `<strong>Estado:</strong> <span>${cidade}/${sigla}</span>`;
+    estadoP.className = 'estado'
     usuarioDiv.appendChild(estadoP);
 
     const emailP = document.createElement('p');
     emailP.innerHTML = `<strong>Email:</strong> <span>${email}</span>`;
+    emailP.className = 'email'
     usuarioDiv.appendChild(emailP);
 
     const telefoneP = document.createElement('p');
     telefoneP.innerHTML = `<strong>Telefone:</strong> <span>${telefone}</span>`;
+    telefoneP.className = 'telefone'
     usuarioDiv.appendChild(telefoneP);
 
     usuariosContainer.appendChild(usuarioDiv);
 }
 
 
+/*imagem,name,genero,nac,cpf,idade,estado,email,telefone*/
