@@ -18,13 +18,13 @@ img {
     background-color: rgb(221, 221, 221);
     border-radius: 20px;
     min-width: 85vh;
-    max-width: 300vh;
+    max-width: 390vh;
     gap: 10px;
     padding-top: 15px;
     padding-left: 15px;
     font-family: 'Abel', sans-serif;
     font-size: x-large;
-
+    width: 1700px;
 }
 
 .usuario {
@@ -66,7 +66,7 @@ footer {
 /*Classes que o css precisa chamar para centralizar todos os resultados. */
 /*imagem,name,genero,nac,cpf,idade,estado,email,telefone*/
 .name {
-    width: 200px;
+    width: 150px;
 }
 .genero{
     width: 100px;
@@ -77,7 +77,7 @@ width: 200px;
 
 }
 .cpf{
-   width: 200px;   
+   width: 190px;   
 
 }
 .idade{
@@ -85,15 +85,16 @@ width: 200px;
 
 }
 .estado{
-  width: 200px; 
+  width: 150px; 
 
 }
 .email{
   width: 200px;    
-
+  
 }
 .telefone{
-   padding-left: 160px; 
-   width: 400px;
-      
+   padding-left: 100px; 
+}
+.contagem{
+    width: 100px;
 }

@@ -5,12 +5,12 @@ async function getOne(uri) {
 }
 
 async function carregarUsuario() {
-    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=1&seed=WR&page=1');
+    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=1');
 
     const usuariosContainer = document.getElementById('usuarios-container');
     usuariosContainer.innerHTML = ""
     for (let i = 0; i < usuario.results.length; i++) {
-        adicionarLinhas(usuariosContainer, usuario, i);
+        adicionarLinhas(usuariosContainer, usuario, i, 1);
     }
 }
 
@@ -20,7 +20,7 @@ async function carregarSegundaPagina() {
     const usuariosContainer = document.getElementById('usuarios-container');
     usuariosContainer.innerHTML = ""
     for (let i = 0; i < segundaPagina.results.length; i++) {
-        adicionarLinhas(usuariosContainer, segundaPagina, i);
+        adicionarLinhas(usuariosContainer, segundaPagina, i, 2);
     }
 }
 
@@ -30,11 +30,40 @@ async function carregarTerceiraPagina() {
     const usuariosContainer = document.getElementById('usuarios-container');
     usuariosContainer.innerHTML = ""
     for (let i = 0; i < terceiraPagina.results.length; i++) {
-        adicionarLinhas(usuariosContainer, terceiraPagina, i);
+        adicionarLinhas(usuariosContainer, terceiraPagina, i, 3);
 
     }
 }
+async function carregarQuartaPagina() {
+    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=4');
 
+    const usuariosContainer = document.getElementById('usuarios-container');
+    usuariosContainer.innerHTML = ""
+    for (let i = 0; i < usuario.results.length; i++) {
+        adicionarLinhas(usuariosContainer, usuario, i, 4);
+    }
+}
+
+async function carregarQuintaPagina() {
+    const segundaPagina = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=5');
+
+    const usuariosContainer = document.getElementById('usuarios-container');
+    usuariosContainer.innerHTML = ""
+    for (let i = 0; i < segundaPagina.results.length; i++) {
+        adicionarLinhas(usuariosContainer, segundaPagina, i, 5);
+    }
+}
+
+async function carregarSextaPagina() {
+    const terceiraPagina = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=6');
+
+    const usuariosContainer = document.getElementById('usuarios-container');
+    usuariosContainer.innerHTML = ""
+    for (let i = 0; i < terceiraPagina.results.length; i++) {
+        adicionarLinhas(usuariosContainer, terceiraPagina, i, 6);
+
+    }
+}
 function converterEstado(estados) {
 
     /// Primeiro IF Verifica se um dos nomes é MATO GROSSO ou PARAIBA para apenas pegar as 2 letras especificas
@@ -81,7 +110,7 @@ function converterEstado(estados) {
 
 }
 
-async function adicionarLinhas(usuariosContainer, usuario, i) {
+async function adicionarLinhas(usuariosContainer, usuario, i, numeroPagina) {
     const nomeP = usuario.results[i].name.first;
     const nomeU = usuario.results[i].name.last;
     const nomeC = `${nomeP} ${nomeU}`;
@@ -95,6 +124,7 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
     const genero = usuario.results[i].gender;
     const cidade = usuario.results[i].location.city;
     const estado = usuario.results[i].location.state;
+    const contagem =  1 + (numeroPagina - 1) * 15 + i;
     const sigla = converterEstado(estado);
 
     const usuarioDiv = document.createElement('div');
@@ -144,6 +174,12 @@ async function adicionarLinhas(usuariosContainer, usuario, i) {
     telefoneP.innerHTML = `<strong>Telefone:</strong> <span>${telefone}</span>`;
     telefoneP.className = 'telefone'
     usuarioDiv.appendChild(telefoneP);
+
+    const contagemP = document.createElement('p');
+    contagemP.innerHTML = `<strong>Posição:</strong> <span>${contagem}</span>`;
+    contagemP.className = 'contagem';
+    usuarioDiv.appendChild(contagemP)
+
 
     usuariosContainer.appendChild(usuarioDiv);
 }
