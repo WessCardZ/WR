@@ -1,68 +1,34 @@
-async function getOne(uri) {
+async function getAPIUsuarios(uri) {
     const encodedURI = encodeURI(uri);
     const response = await fetch(encodedURI);
     return await response.json();
 }
 
-async function carregarUsuario() {
-    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=1');
+async function montarTabelaUsuarios(pagina = 1) {
+    const response = await getAPIUsuarios(`https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=${pagina}`);
 
+    const usuarioList = response.results.map(usuario => ({
+        primeiroNome: usuario.name.first,
+        ultimoNome: usuario.name.last,
+        nomeCompleto: usuario.name.first + ' ' + usuario.name.last,
+        fotoUsuario: usuario.picture.large,
+        nacionalidade: usuario.nat,
+        cpf: usuario.id.value,
+        email: usuario.email,
+        telefone: usuario.phone,
+        idade: usuario.dob.age,
+        genero: usuario.gender,
+        cidade: usuario.location.city,
+        estado: usuario.location.state
+    }));
     const usuariosContainer = document.getElementById('usuarios-container');
     usuariosContainer.innerHTML = ""
-    for (let i = 0; i < usuario.results.length; i++) {
-        adicionarLinhas(usuariosContainer, usuario, i, 1);
-    }
-}
 
-async function carregarSegundaPagina() {
-    const segundaPagina = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=2');
+    usuarioList.forEach((u, index) => {
+        adicionarUsuarioLinha(usuariosContainer, u, index, pagina)
+    });
 
-    const usuariosContainer = document.getElementById('usuarios-container');
-    usuariosContainer.innerHTML = ""
-    for (let i = 0; i < segundaPagina.results.length; i++) {
-        adicionarLinhas(usuariosContainer, segundaPagina, i, 2);
-    }
-}
 
-async function carregarTerceiraPagina() {
-    const terceiraPagina = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=3');
-
-    const usuariosContainer = document.getElementById('usuarios-container');
-    usuariosContainer.innerHTML = ""
-    for (let i = 0; i < terceiraPagina.results.length; i++) {
-        adicionarLinhas(usuariosContainer, terceiraPagina, i, 3);
-
-    }
-}
-async function carregarQuartaPagina() {
-    const usuario = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=4');
-
-    const usuariosContainer = document.getElementById('usuarios-container');
-    usuariosContainer.innerHTML = ""
-    for (let i = 0; i < usuario.results.length; i++) {
-        adicionarLinhas(usuariosContainer, usuario, i, 4);
-    }
-}
-
-async function carregarQuintaPagina() {
-    const segundaPagina = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=5');
-
-    const usuariosContainer = document.getElementById('usuarios-container');
-    usuariosContainer.innerHTML = ""
-    for (let i = 0; i < segundaPagina.results.length; i++) {
-        adicionarLinhas(usuariosContainer, segundaPagina, i, 5);
-    }
-}
-
-async function carregarSextaPagina() {
-    const terceiraPagina = await getOne('https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=6');
-
-    const usuariosContainer = document.getElementById('usuarios-container');
-    usuariosContainer.innerHTML = ""
-    for (let i = 0; i < terceiraPagina.results.length; i++) {
-        adicionarLinhas(usuariosContainer, terceiraPagina, i, 6);
-
-    }
 }
 function converterEstado(estados) {
 
@@ -110,68 +76,56 @@ function converterEstado(estados) {
 
 }
 
-async function adicionarLinhas(usuariosContainer, usuario, i, numeroPagina) {
-    const nomeP = usuario.results[i].name.first;
-    const nomeU = usuario.results[i].name.last;
-    const nomeC = `${nomeP} ${nomeU}`;
-
-    const foto = usuario.results[i].picture.large;
-    const nac = usuario.results[i].nat;
-    const cpf = usuario.results[i].id.value;
-    const email = usuario.results[i].email;
-    const telefone = usuario.results[i].phone;
-    const idade = usuario.results[i].dob.age;
-    const genero = usuario.results[i].gender;
-    const cidade = usuario.results[i].location.city;
-    const estado = usuario.results[i].location.state;
-    const contagem =  1 + (numeroPagina - 1) * 15 + i;
-    const sigla = converterEstado(estado);
+function adicionarUsuarioLinha(usuariosContainer, usuario, index, numeroPagina) {
+    const contagem = 1 + (numeroPagina - 1) * 15 + index;
+    const sigla = converterEstado(usuario.estado);
+    console.log(usuario);
 
     const usuarioDiv = document.createElement('div');
     usuarioDiv.className = 'usuario';
 
     const fotoImg = document.createElement('img');
-    fotoImg.src = foto;
+    fotoImg.src = usuario.fotoUsuario;
     fotoImg.className = 'imagem'
     usuarioDiv.appendChild(fotoImg);
 
     const nomeCP = document.createElement('p');
-    nomeCP.innerHTML = `<strong>Nome:</strong> <span>${nomeC}</span>`;
+    nomeCP.innerHTML = `<strong>Nome:</strong> <span>${usuario.nomeCompleto}</span>`;
     nomeCP.className = 'name'
     usuarioDiv.appendChild(nomeCP);
 
     const generoP = document.createElement('p');
-    generoP.innerHTML = `<strong>Gênero:</strong> <span>${genero === 'male' ? 'Homem' : 'Mulher'}</span>`;
+    generoP.innerHTML = `<strong>Gênero:</strong> <span>${usuario.genero === 'male' ? 'Homem' : 'Mulher'}</span>`;
     generoP.className = 'genero'
     usuarioDiv.appendChild(generoP);
 
     const nacP = document.createElement('p');
-    nacP.innerHTML = `<strong>Nacionalidade:</strong> <span>${nac}</span>`;
+    nacP.innerHTML = `<strong>Nacionalidade:</strong> <span>${usuario.nacionalidade}</span>`;
     nacP.className = 'nac'
     usuarioDiv.appendChild(nacP);
 
     const cpfP = document.createElement('p');
-    cpfP.innerHTML = `<strong>CPF:</strong> <span>${cpf}</span>`;
+    cpfP.innerHTML = `<strong>CPF:</strong> <span>${usuario.cpf}</span>`;
     cpfP.className = 'cpf'
     usuarioDiv.appendChild(cpfP);
 
     const idadeP = document.createElement('p');
-    idadeP.innerHTML = `<strong>Idade:</strong> <span>${idade}</span>`;
+    idadeP.innerHTML = `<strong>Idade:</strong> <span>${usuario.idade}</span>`;
     idadeP.className = 'idade'
     usuarioDiv.appendChild(idadeP);
 
     const estadoP = document.createElement('p');
-    estadoP.innerHTML = `<strong>Estado:</strong> <span>${cidade}/${sigla}</span>`;
+    estadoP.innerHTML = `<strong>Estado:</strong> <span>${usuario.cidade}/${sigla}</span>`;
     estadoP.className = 'estado'
     usuarioDiv.appendChild(estadoP);
 
     const emailP = document.createElement('p');
-    emailP.innerHTML = `<strong>Email:</strong> <span>${email}</span>`;
+    emailP.innerHTML = `<strong>Email:</strong> <span>${usuario.email}</span>`;
     emailP.className = 'email'
     usuarioDiv.appendChild(emailP);
 
     const telefoneP = document.createElement('p');
-    telefoneP.innerHTML = `<strong>Telefone:</strong> <span>${telefone}</span>`;
+    telefoneP.innerHTML = `<strong>Telefone:</strong> <span>${usuario.telefone}</span>`;
     telefoneP.className = 'telefone'
     usuarioDiv.appendChild(telefoneP);
 
@@ -180,9 +134,7 @@ async function adicionarLinhas(usuariosContainer, usuario, i, numeroPagina) {
     contagemP.className = 'contagem';
     usuarioDiv.appendChild(contagemP)
 
-
     usuariosContainer.appendChild(usuarioDiv);
 }
-
 
 /*imagem,name,genero,nac,cpf,idade,estado,email,telefone*/
