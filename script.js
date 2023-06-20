@@ -7,77 +7,31 @@ async function getAPIUsuarios(uri) {
 async function montarTabelaUsuarios(pagina = 1) {
     const response = await getAPIUsuarios(`https://randomuser.me/api/?nat=BR&results=15&seed=WR&page=${pagina}`);
 
-    const usuarioList = response.results.map(usuario => ({
-        primeiroNome: usuario.name.first,
-        ultimoNome: usuario.name.last,
-        nomeCompleto: usuario.name.first + ' ' + usuario.name.last,
-        fotoUsuario: usuario.picture.large,
-        nacionalidade: usuario.nat,
-        cpf: usuario.id.value,
-        email: usuario.email,
-        telefone: usuario.phone,
-        idade: usuario.dob.age,
-        genero: usuario.gender,
-        cidade: usuario.location.city,
-        estado: usuario.location.state
+    const usuarioList = response.results.map(u => ({
+        primeiroNome: u.name.first,
+        ultimoNome: u.name.last,
+        nomeCompleto: u.name.first + ' ' + u.name.last,
+        fotoUsuario: u.picture.large,
+        nacionalidade: u.nat,
+        cpf: u.id.value,
+        email: u.email,
+        telefone: u.phone,
+        idade: u.dob.age,
+        genero: u.gender,
+        cidade: u.location.city,
+        estado: u.location.state
     }));
     const usuariosContainer = document.getElementById('usuarios-container');
     usuariosContainer.innerHTML = ""
 
-    usuarioList.forEach((u, index) => {
-        adicionarUsuarioLinha(usuariosContainer, u, index, pagina)
+    usuarioList.forEach((u, contar) => {
+        adicionarUsuarioLinha(usuariosContainer, u, contar, pagina)
     });
 
-
-}
-function converterEstado(estados) {
-
-    /// Primeiro IF Verifica se um dos nomes é MATO GROSSO ou PARAIBA para apenas pegar as 2 letras especificas
-    if (estados.toLowerCase() === 'mato grosso' ||
-        estados.toLowerCase() === 'paraíba' ||
-        estados.toLowerCase() === 'amapá') {
-
-        if (estados.toLowerCase() === 'mato grosso') {
-            estados = `MT`;
-        }
-        else if (estados.toLowerCase() === 'paraíba') {
-            estados = `PB`;
-        }
-        else {
-            estados = `AP`
-        }
-    }
-    /// O Else IF verifica se os nomes tem espaço, se tiver ele pega a primeira letra do primeiro nome,
-    ///  e a primeira letra do ultimo nome.
-    else if (estados.indexOf(" ") !== -1) {
-        let prNome = estados.indexOf(" ")
-        let ultNome = estados.lastIndexOf(" ")
-
-        let saida =
-            estados.substr(0, prNome).charAt(0).toUpperCase() +
-            estados.substr(ultNome).charAt(1).toUpperCase();
-
-        estados = `${saida}`
-
-    }
-    /// O else faz o contrario do Else IF, se não tiver espaço, ele pega as 2 primeiras letras do nome
-    else {
-        let prLetra = estados.charAt(0)
-        let sgLetra = estados.charAt(1)
-
-        let saida = prLetra + sgLetra
-
-        estados = `${saida.toUpperCase()}`
-
-
-    }
-
-    return estados;
-
 }
 
-function adicionarUsuarioLinha(usuariosContainer, usuario, index, numeroPagina) {
-    const contagem = 1 + (numeroPagina - 1) * 15 + index;
+function adicionarUsuarioLinha(usuariosContainer, usuario, contarPagina, numeroPagina) {
+    const contagem = 1 + (numeroPagina - 1) * 15 + contarPagina;
     const sigla = converterEstado(usuario.estado);
     console.log(usuario);
 
@@ -135,6 +89,27 @@ function adicionarUsuarioLinha(usuariosContainer, usuario, index, numeroPagina) 
     usuarioDiv.appendChild(contagemP)
 
     usuariosContainer.appendChild(usuarioDiv);
+}
+
+function converterEstado(estados) {
+
+    const estadoFormatado = estados.toLowerCase();
+
+    if (estadoFormatado === 'mato grosso') return 'MT';
+    if (estadoFormatado === 'paraíba') return 'PB';
+    if (estadoFormatado === 'amapá') return 'AP';
+    if (estadoFormatado === 'roraima') return 'RR';
+
+    let primeiraLetra = estadoFormatado.charAt(0);
+    let segundaLetra = estadoFormatado.charAt(1);
+
+    if (estadoFormatado.includes(" ")) {
+        const espaco = estadoFormatado.indexOf(" ");
+        segundaLetra = estadoFormatado.charAt(espaco + 1);
+    }
+
+    return `${primeiraLetra.toUpperCase()}${segundaLetra.toUpperCase()}`;
+
 }
 
 /*imagem,name,genero,nac,cpf,idade,estado,email,telefone*/
