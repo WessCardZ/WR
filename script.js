@@ -111,5 +111,20 @@ function converterEstado(estados) {
     return `${primeiraLetra.toUpperCase()}${segundaLetra.toUpperCase()}`;
 
 }
+// const previousBtn = document.getElementById('previousBtn');
+// const nextBtn = document.getElementById('nextBtn');
+// let paginaAtual = 1;
+
+// previousBtn.addEventListener('click', function() {
+//   if (paginaAtual > 1) {
+//     paginaAtual--;
+//     montarTabelaUsuarios(paginaAtual);
+//   }
+// });
+
+// nextBtn.addEventListener('click', function() {
+//   paginaAtual++;
+//   montarTabelaUsuarios(paginaAtual);
+// });
 
 /*imagem,name,genero,nac,cpf,idade,estado,email,telefone*/
