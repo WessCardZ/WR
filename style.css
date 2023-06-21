@@ -48,7 +48,7 @@ p {
 button {
   border: 1px solid white;
   width: 100px;
-  height: 100px;
+  height: 80px;
   font-size: 50px;
   margin: 15px;
   background: none;
@@ -117,22 +117,40 @@ a {
 }
 
 a:hover {
-  background-color: #00000094;
-  color: rgba(0, 0, 0, 0.562);
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+}
+
+#botao {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .previous {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 110px;
+  text-align: center;
   background-color: gray;
   color: rgb(0, 0, 0);
   font-size: x-large;
   border-radius: 10px;
+  padding-left: 20px;
 }
 
 .next {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  width: 80px;
   background-color: #0afca38c;
   color: rgb(0, 0, 0);
   font-size: x-large;
   border-radius: 10px;
+  padding-left: 30px;
+  /* margin-left: 1550px; */
 }
 
 .round {
