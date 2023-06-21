@@ -111,20 +111,23 @@ function converterEstado(estados) {
     return `${primeiraLetra.toUpperCase()}${segundaLetra.toUpperCase()}`;
 
 }
-// const previousBtn = document.getElementById('previousBtn');
-// const nextBtn = document.getElementById('nextBtn');
-// let paginaAtual = 1;
+const previousBtn = document.getElementById('previousBtn');
+const nextBtn = document.getElementById('nextBtn');
+let paginaAtual = 1;
+let paginaLimite = 6;
 
-// previousBtn.addEventListener('click', function() {
-//   if (paginaAtual > 1) {
-//     paginaAtual--;
-//     montarTabelaUsuarios(paginaAtual);
-//   }
-// });
+previousBtn.addEventListener('click', function () {
+    if (paginaAtual > 1) {
+        paginaAtual--;
+        montarTabelaUsuarios(paginaAtual);
+    }
+});
 
-// nextBtn.addEventListener('click', function() {
-//   paginaAtual++;
-//   montarTabelaUsuarios(paginaAtual);
-// });
+nextBtn.addEventListener('click', function () {
+    if (paginaAtual < paginaLimite) {
+        paginaAtual++;
+        montarTabelaUsuarios(paginaAtual);
+    }
+});
 
 /*imagem,name,genero,nac,cpf,idade,estado,email,telefone*/

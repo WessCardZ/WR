@@ -1,129 +1,140 @@
 @import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
 body {
-    background-color: #1b1e23;
+  background-color: #1b1e23;
 }
 
 img {
-    position: relative;
-    border: 2px solid gray;
-    border-radius: 50%;
-    box-shadow: 3px 3px 4px;
-    padding: 2px;
+  position: relative;
+  border: 2px solid gray;
+  border-radius: 50%;
+  box-shadow: 3px 3px 4px;
+  padding: 2px;
 }
 
 #usuarios-container {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: rgb(221, 221, 221);
-    border-radius: 20px;
-    min-width: 85vh;
-    max-width: 390vh;
-    gap: 10px;
-    padding-top: 15px;
-    padding-left: 15px;
-    font-family: 'Abel', sans-serif;
-    font-size: x-large;
-    width: 1880px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(221, 221, 221);
+  border-radius: 20px;
+  min-width: 85vh;
+  max-width: 390vh;
+  gap: 10px;
+  padding-top: 15px;
+  padding-left: 15px;
+  font-family: 'Abel', sans-serif;
+  font-size: x-large;
+  width: 1880px;
 }
 
 .usuario {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #000000;
-    border-radius: 10px;
-    width: 100%;
-    justify-content:flex-start
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  width: 100%;
+  justify-content: flex-start
 }
 
 p {
-    display: flex;
-    flex-direction: column;
-    padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
 }
 
 button {
-    border: 1px solid white;
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
-    margin: 15px;
-    background: none;
-    color: white;
+  border: 1px solid white;
+  width: 100px;
+  height: 100px;
+  font-size: 50px;
+  margin: 15px;
+  background: none;
+  color: white;
 }
 
 button:hover {
-    border: 1px solid rgb(10, 32, 231);
-    color: rgb(10, 32, 231);
+  border: 1px solid rgb(10, 32, 231);
+  color: rgb(10, 32, 231);
 }
 
 footer {
-    text-align: center;
+  text-align: center;
 }
+
 /*Classes que o css precisa chamar para centralizar todos os resultados. */
 /*imagem,name,genero,nac,cpf,idade,estado,email,telefone*/
 .name {
-    width: 150px;
+  width: 150px;
 }
-.genero{
-    width: 100px;
-    
-}
-.nac{
-width: 200px;
+
+.genero {
+  width: 100px;
 
 }
-.cpf{
-   width: 190px;   
+
+.nac {
+  width: 200px;
 
 }
-.idade{
-   width: 100px;   
+
+.cpf {
+  width: 190px;
 
 }
-.estado{
-  width: 150px; 
+
+.idade {
+  width: 100px;
 
 }
-.email{
-  width: 200px;    
-  
+
+.estado {
+  width: 150px;
+
 }
-.telefone{
-   padding-left: 140px; 
-   width: 180px;
+
+.email {
+  width: 200px;
+
 }
-.contagem{
-    width: 100px;
+
+.telefone {
+  padding-left: 140px;
+  width: 180px;
 }
-/* a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-  }
-  
-  a:hover {
-    background-color: #dddddd94;
-    color: black;
-  }
-  
-  .previous {
-    background-color:gray;
-    color: rgb(0, 0, 0);
-    font-size:x-large;
-    border-radius: 10px;
-  }
-  
-  .next {
-    background-color: #0afca38c;
-    color: rgb(0, 0, 0);
-    font-size:x-large;
-    border-radius: 10px;
-  }
-  
-  .round {
-    border-radius: 50%;
-  } */
+
+.contagem {
+  width: 100px;
+}
+
+a {
+
+  padding: 10px 16px;
+  left: 1000px;
+
+}
+
+a:hover {
+  background-color: #00000094;
+  color: rgba(0, 0, 0, 0.562);
+}
+
+.previous {
+  background-color: gray;
+  color: rgb(0, 0, 0);
+  font-size: x-large;
+  border-radius: 10px;
+}
+
+.next {
+  background-color: #0afca38c;
+  color: rgb(0, 0, 0);
+  font-size: x-large;
+  border-radius: 10px;
+}
+
+.round {
+  border-radius: 50%;
+}
